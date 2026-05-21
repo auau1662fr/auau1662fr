@@ -1,0 +1,550 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #050816;
+  color: white;
+  overflow: hidden;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  height: 70px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 30px;
+
+  background: #0b1224;
+
+  border-bottom: 1px solid #1f4fff;
+}
+
+.logo {
+  color: #4da3ff;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #dbe8ff;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #4da3ff;
+}
+
+/* =========================
+   BUILDER LAYOUT
+========================= */
+
+.builder-layout {
+  display: grid;
+
+  /* fermé par défaut */
+  grid-template-columns: 1fr 0fr;
+
+  height: calc(100vh - 70px);
+
+  transition: 0.3s ease;
+}
+
+/* quand panel ouvert */
+.builder-layout.open {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* =========================
+   CENTRE
+========================= */
+
+.builder-center {
+  overflow-y: auto;
+
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* quand panel ouvert */
+.builder-layout.open .builder-center {
+  width: 65%;
+}
+
+/* =========================
+   COLONNE COMPONENTS
+========================= */
+
+.component-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.components-grid {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+  width: 260px;
+
+  padding-bottom: 80px;
+}
+.builder-column {
+
+  width: 100%;
+
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transition: 0.4s ease;
+
+  overflow-y: auto;
+
+  height: calc(100vh - 80px);
+}
+/* cartes */
+.comp-card {
+  width: 250px;
+
+  padding: 18px;
+
+  background: #101b35;
+
+  border: 1px solid #295dff;
+
+  border-radius: 12px;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.comp-card:hover {
+  background: #132347;
+  box-shadow: 0 0 15px #295dff;
+}
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.summary button {
+  margin-top: 15px;
+
+  padding: 10px 20px;
+
+  background: #295dff;
+  border: none;
+
+  border-radius: 8px;
+
+  color: white;
+
+  cursor: pointer;
+}
+
+/* =========================
+   PANEL DROIT
+========================= */
+
+.side-panel {
+  overflow: hidden;
+
+  background: #0b1224;
+
+  border-left: 1px solid #1f4fff;
+}
+
+/* contenu panel */
+.panel-content {
+  padding: 20px;
+}
+
+/* panel ouvert */
+.side-panel.open {
+  width: 45%;
+}
+
+/* header panel */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px;
+
+  border-bottom: 1px solid #1f4fff;
+}
+
+/* bouton fermer */
+.close-btn {
+  background: none;
+  border: none;
+
+  color: #4da3ff;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+/* contenu */
+.panel-content {
+  padding: 20px;
+}
+
+/* =========================
+   HOME PAGE
+========================= */
+
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.hero h1 {
+  color: #4da3ff;
+  font-size: 42px;
+}
+
+.hero p {
+  margin-top: 10px;
+  color: #9bbcff;
+}
+
+/* builds */
+.builds-section {
+  padding: 20px;
+}
+
+.builds-grid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
+  gap: 20px;
+}
+
+.build-card {
+  background: #101b35;
+
+  border: 1px solid #295dff;
+
+  border-radius: 12px;
+
+  padding: 20px;
+}
+
+.build-card:hover {
+  box-shadow: 0 0 15px #295dff;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.actions {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 15px;
+
+  padding: 20px;
+}
+
+.action-card {
+  background: #101b35;
+
+  border: 1px solid #295dff;
+
+  border-radius: 12px;
+
+  padding: 20px;
+
+  text-align: center;
+
+  text-decoration: none;
+
+  color: white;
+
+  transition: 0.2s;
+}
+
+.action-card:hover {
+  box-shadow: 0 0 15px #295dff;
+}
+/* =========================
+   BUILDER LAYOUT
+========================= */
+
+.builder-layout {
+  display: flex;
+  min-height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+/* =========================
+   CENTRE
+========================= */
+
+.builder-column {
+  flex: 1;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transition: 0.4s;
+}
+
+/* =========================
+   TITRE
+========================= */
+
+.page-title {
+  font-size: 42px;
+  margin-bottom: 40px;
+
+  color: #4aa3ff;
+
+  text-shadow:
+    0 0 10px #4aa3ff,
+    0 0 20px #4aa3ff;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.components-grid {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+  width: 260px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.component-card {
+
+  width: 260px;
+
+  height: 110px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15,25,50,0.95),
+      rgba(5,10,25,0.95)
+    );
+
+  border: 1px solid rgba(74,163,255,0.25);
+
+  border-radius: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: 0.35s;
+
+  box-shadow:
+    0 0 20px rgba(0,140,255,0.08);
+}
+
+.component-card:hover {
+
+  transform: translateY(-6px);
+
+  border-color: #4aa3ff;
+
+  box-shadow:
+    0 0 25px rgba(74,163,255,0.35);
+}
+
+.component-card h2 {
+
+  color: #d9ecff;
+
+  font-size: 22px;
+
+  text-shadow:
+    0 0 10px rgba(74,163,255,0.5);
+}
+
+/* =========================
+   PANEL
+========================= */
+
+.components-panel {
+
+  width: 0;
+
+  opacity: 0;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10,15,30,0.98),
+      rgba(5,8,20,0.98)
+    );
+
+  border-left: 1px solid rgba(74,163,255,0.25);
+
+  transition:
+    width 0.4s ease,
+    opacity 0.3s ease;
+
+  box-shadow:
+    -10px 0 40px rgba(0,0,0,0.4);
+}
+
+/* OUVERT */
+
+.components-panel.open {
+
+  width: 65%;
+
+  opacity: 1;
+}
+
+/* =========================
+   HEADER PANEL
+========================= */
+
+.panel-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 25px;
+
+  border-bottom:
+    1px solid rgba(74,163,255,0.2);
+}
+
+.panel-header h2 {
+
+  color: #4aa3ff;
+
+  font-size: 28px;
+}
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.close-btn {
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  background:
+    rgba(74,163,255,0.12);
+
+  color: white;
+
+  font-size: 20px;
+
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+
+  background: #4aa3ff;
+
+  box-shadow:
+    0 0 20px rgba(74,163,255,0.5);
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.panel-content {
+
+  padding: 25px;
+}
+
+.component-item {
+
+  padding: 18px;
+
+  margin-bottom: 15px;
+
+  border-radius: 14px;
+
+  background:
+    rgba(20,30,55,0.9);
+
+  border:
+    1px solid rgba(74,163,255,0.15);
+
+  transition: 0.3s;
+
+  cursor: pointer;
+}
+
+.component-item:hover {
+
+  border-color: #4aa3ff;
+
+  box-shadow:
+    0 0 18px rgba(74,163,255,0.25);
+}

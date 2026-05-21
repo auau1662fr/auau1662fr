@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Builder</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+  <div class="logo">
+    AUAU BUILDER
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="builder.html">Builder</a>
+    <a href="components.html">Components</a>
+    <a href="compare.html">Compare</a>
+  </nav>
+
+</header>
+
+<!-- PAGE -->
+
+<div class="builder-layout">
+
+  <!-- COLONNE BUILDER -->
+
+  <section class="builder-column" id="builder-column">
+
+    <h1 class="page-title">
+      PC BUILDER
+    </h1>
+
+    <div class="components-grid">
+
+      <div class="component-card" onclick="togglePanel('CPU')">
+        <h2>CPU</h2>
+      </div>
+
+      <div class="component-card" onclick="togglePanel('GPU')">
+        <h2>GPU</h2>
+      </div>
+
+      <div class="component-card" onclick="togglePanel('RAM')">
+        <h2>RAM</h2>
+      </div>
+
+      <div class="component-card" onclick="togglePanel('Motherboard')">
+        <h2>Motherboard</h2>
+      </div>
+
+      <div class="component-card" onclick="togglePanel('Storage')">
+        <h2>Storage</h2>
+      </div>
+
+      <div class="component-card" onclick="togglePanel('PSU')">
+        <h2>PSU</h2>
+      </div>
+
+      <div class="component-card" onclick="togglePanel('Case')">
+        <h2>Case</h2>
+      </div>
+
+      <div class="component-card" onclick="togglePanel('Cooling')">
+        <h2>Cooling</h2>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PANEL -->
+
+  <aside class="components-panel" id="components-panel">
+
+    <div class="panel-header">
+
+      <h2 id="panel-title">
+        Components
+      </h2>
+
+      <button class="close-btn" onclick="closePanel()">
+        ✕
+      </button>
+
+    </div>
+
+<div class="panel-content" id="panel-content">
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
