@@ -1,0 +1,41 @@
+# Dépendances Node.js
+node_modules/
+
+# Modèles IA locaux
+models/*.gguf
+
+# Bases de données locales et sauvegardes
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+
+# Fichiers de sauvegarde
+*.bak
+*.bak.*
+*.backup
+*.backup.*
+*.before-*.bak
+
+# Fichiers sensibles
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Fichiers temporaires et éditeurs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Fichiers générés par l'application
+public/uploads/
+
+# Toutes les variantes de sauvegardes
+*.bak*
+*.backup*
+*.before-*
