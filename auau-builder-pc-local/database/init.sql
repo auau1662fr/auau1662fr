@@ -24,3 +24,11 @@ CREATE TABLE IF NOT EXISTS build_items (
     FOREIGN KEY(build_id) REFERENCES builds(id),
     FOREIGN KEY(component_id) REFERENCES components(id)
 );
+
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE COLLATE NOCASE,
+    password_hash TEXT NOT NULL,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    avatar TEXT
+);

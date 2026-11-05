@@ -1,0 +1,321 @@
+/* ==========================================
+   AUAU BUILDER - COMPARATEUR
+========================================== */
+
+.compare-page {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 45px 30px 100px;
+    box-sizing: border-box;
+    color: white;
+}
+
+.compare-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.compare-header h1 {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.compare-header p {
+    margin-top: 12px;
+    opacity: 0.85;
+}
+
+.compare-selection,
+.compare-results {
+    border: 2px solid #52edff;
+    border-radius: 18px;
+    padding: 25px;
+    background: linear-gradient(
+        145deg,
+        rgba(20, 67, 180, 0.96),
+        rgba(8, 31, 105, 0.98)
+    );
+    box-shadow: 0 0 22px rgba(0, 230, 255, 0.18);
+}
+
+.compare-results {
+    margin-top: 30px;
+}
+
+.compare-results[hidden] {
+    display: none;
+}
+
+.selection-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.selection-header h2,
+.compare-results h2 {
+    margin: 0 0 18px;
+    font-size: 24px;
+}
+
+.selection-header h2 {
+    margin: 0;
+}
+
+#add-build,
+#compare-button,
+.remove-build {
+    border: 2px solid #62efff;
+    border-radius: 10px;
+    background: rgba(12, 49, 130, 0.95);
+    color: white;
+    padding: 12px 18px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+#add-build:hover,
+#compare-button:hover,
+.remove-build:hover {
+    background: rgba(22, 94, 190, 1);
+}
+
+.build-selectors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.build-selector-card {
+    min-width: 0;
+    padding: 18px;
+    border: 2px solid #48eaff;
+    border-radius: 14px;
+    background: rgba(5, 24, 82, 0.65);
+}
+
+.build-selector-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.build-selector-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.remove-build {
+    padding: 7px 10px;
+    font-size: 12px;
+}
+
+.build-select {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px;
+    border: 2px solid #62efff;
+    border-radius: 9px;
+    background: #092b79;
+    color: white;
+    font-size: 14px;
+}
+
+.compare-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+#compare-button {
+    min-width: 250px;
+    font-size: 16px;
+}
+
+#compare-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.compare-message {
+    text-align: center;
+    min-height: 20px;
+    color: #c9f7ff;
+}
+
+.comparison-scroll {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 35px;
+}
+
+.comparison-table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 15px;
+    border: 1px solid rgba(98, 239, 255, 0.45);
+    text-align: left;
+    vertical-align: top;
+    min-width: 180px;
+}
+
+.comparison-table th {
+    background: rgba(5, 24, 82, 0.85);
+    color: #70f4ff;
+}
+
+.comparison-table td {
+    background: rgba(7, 34, 103, 0.65);
+    font-size: 13px;
+}
+
+.comparison-table td:first-child {
+    font-weight: 800;
+    color: #70f4ff;
+    min-width: 130px;
+}
+
+.analysis-intro {
+    opacity: 0.85;
+    margin-bottom: 20px;
+}
+
+.analysis-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.analysis-card {
+    min-width: 0;
+    padding: 22px;
+    border: 2px solid #54eaff;
+    border-radius: 16px;
+    background: linear-gradient(
+        145deg,
+        rgba(38, 111, 238, 0.95),
+        rgba(23, 65, 171, 0.95)
+    );
+}
+
+.analysis-card h3 {
+    margin: 0 0 12px;
+    font-size: 21px;
+    overflow-wrap: anywhere;
+}
+
+.analysis-badge {
+    display: inline-block;
+    margin: 0 6px 8px 0;
+    padding: 6px 10px;
+    border: 1px solid #8bf4ff;
+    border-radius: 8px;
+    background: rgba(5, 24, 82, 0.75);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.analysis-card h4 {
+    margin: 20px 0 10px;
+    color: #9af6ff;
+}
+
+.analysis-card ul {
+    padding-left: 20px;
+    margin: 8px 0;
+}
+
+.analysis-card li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.analysis-note {
+    font-size: 12px;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+@media (max-width: 650px) {
+    .compare-page {
+        padding: 25px 12px 80px;
+    }
+
+    .compare-selection,
+    .compare-results {
+        padding: 16px;
+    }
+
+    #compare-button {
+        width: 100%;
+        min-width: 0;
+    }
+}
+/* =========================================================
+   ANALYSE IA LOCALE
+========================================================= */
+
+.analysis-divider {
+    margin: 36px 0;
+    border: 0;
+    border-top: 1px solid #d8dce3;
+}
+
+.ai-analysis-section {
+    margin-top: 24px;
+}
+
+.ai-analysis-section h2 {
+    margin-bottom: 12px;
+}
+
+#ai-analyze-button {
+    padding: 12px 20px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#ai-analyze-button:hover:not(:disabled) {
+    background: #1d4ed8;
+}
+
+#ai-analyze-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.ai-analysis-result {
+    margin-top: 20px;
+    padding: 24px;
+    border: 1px solid #d8dce3;
+    border-radius: 12px;
+    background: #fff;
+    color: #202938;
+}
+
+#ai-analysis-content {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.8;
+    font-size: 0.98rem;
+}

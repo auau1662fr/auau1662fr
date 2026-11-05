@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Auau Builder</title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
@@ -11,12 +12,55 @@
 <header class="navbar">
   <div class="logo">AUAU BUILDER</div>
 
-  <nav class="nav-links">
-    <a href="index.html">Accueil</a>
-    <a href="builder.html">Builder</a>
-    <a href="components.html">Components</a>
-    <a href="compare.html">Compare</a>
-  </nav>
+    <div class="nav-right">
+
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="builder.html">Builder</a>
+      <a href="components.html">Components</a>
+      <a href="compare.html">Compare</a>
+    </nav>
+
+    <div class="profile-wrapper">
+
+      <button
+        id="profileButton"
+        class="profile-button"
+        type="button"
+        aria-label="Ouvrir le menu du profil"
+        aria-expanded="false"
+        aria-controls="profileMenu"
+      >
+        <span id="profileIcon">👤</span>
+        <img id="profileImage" alt="Photo de profil" hidden>
+      </button>
+
+      <div id="profileMenu" class="profile-menu" hidden>
+
+        <h3>👤 Mon profil</h3>
+
+        <p id="profileUsername">Non connecté</p>
+
+        <label for="profileImageInput" class="profile-action">
+          🖼️ Changer mon image
+        </label>
+
+        <input
+          type="file"
+          id="profileImageInput"
+          accept="image/png,image/jpeg,image/webp"
+          hidden
+        >
+
+        <button id="logoutButton" class="logout-button" type="button">
+          🚪 Se déconnecter
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
 </header>
 
 <section class="hero">
@@ -24,11 +68,7 @@
   <p>Configure tes PC sans dépendre d’Internet</p>
 </section>
 
-<section class="builds-section">
-  <h2>Mes Builds</h2>
-  <div id="builds-container" class="builds-grid"></div>
-</section>
-
+<!-- Vignettes / actions -->
 <section class="actions">
 
   <a class="action-card" href="builder.html">
@@ -49,7 +89,15 @@
 
 </section>
 
+<!-- Builds sauvegardés -->
+<section class="builds-section">
+  <h2>Mes Builds</h2>
+
+  <div id="builds-container" class="builds-grid"></div>
+</section>
+
 <script src="js/home.js"></script>
+<script src="js/profile.js"></script>
 
 </body>
 </html>

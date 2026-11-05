@@ -1,39 +1,451 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Components</title>
-  <link rel="stylesheet" href="/css/style.css">
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Components DB - AUAU BUILDER</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/components.css"
+    >
+
 </head>
+
 
 <body>
 
-<header class="navbar">
-  <div class="logo">AUAU BUILDER</div>
 
-  <nav class="nav-links">
-    <a href="index.html">Accueil</a>
-    <a href="builder.html">Builder</a>
-    <a href="components.html">Components</a>
-    <a href="compare.html">Compare</a>
-  </nav>
+<header class="navbar">
+
+    <div class="logo">
+        AUAU BUILDER
+    </div>
+
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Accueil
+        </a>
+
+        <a href="builder.html">
+            Builder
+        </a>
+
+        <a
+            href="components.html"
+            class="active"
+        >
+            Components
+        </a>
+
+        <a href="compare.html">
+            Compare
+        </a>
+
+    </nav>
+
 </header>
 
-<section class="page">
-  <h1>COMPONENTS DB</h1>
 
-  <div class="form">
-    <input placeholder="Nom">
-    <input placeholder="Catégorie">
-    <input placeholder="Prix">
-    <button>Ajouter</button>
+
+<main class="components-page">
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <section class="components-header">
+
+        <h1>
+            COMPONENTS DB
+        </h1>
+
+        <p>
+            Consulte, recherche, modifie et ajoute
+            les composants de ta base de données.
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         RECHERCHE / FILTRES
+    ================================================== -->
+
+    <section class="components-tools">
+
+
+        <div class="search-box">
+
+            <input
+                type="search"
+                id="search-input"
+                placeholder="Rechercher un composant..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div class="brand-box">
+
+            <select id="brand">
+
+                <option value="">
+                    Choisir une marque
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="category-box">
+
+            <select id="category">
+
+                <option value="">
+                    Choisir une catégorie
+                </option>
+
+                <option value="CPU">
+                    CPU
+                </option>
+
+                <option value="GPU">
+                    GPU
+                </option>
+
+                <option value="RAM">
+                    RAM
+                </option>
+
+                <option value="Motherboard">
+                    Motherboard
+                </option>
+
+                <option value="Storage">
+                    Storage
+                </option>
+
+                <option value="PSU">
+                    PSU
+                </option>
+
+                <option value="Case">
+                    Case
+                </option>
+
+                <option value="Cooling">
+                    Cooling
+                </option>
+
+                <option value="Fans">
+                    Fans
+                </option>
+
+                <option value="Thermal Paste">
+                    Thermal Paste
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         LISTE DES COMPOSANTS
+    ================================================== -->
+
+    <section class="components-list-section">
+
+
+        <div class="section-title">
+
+            <div>
+
+                <h2>
+                    Composants disponibles
+                </h2>
+
+                <p>
+                    Tous les composants enregistrés
+                    dans la base de données.
+                </p>
+
+            </div>
+
+
+            <span id="components-count">
+                0 composant
+            </span>
+
+        </div>
+
+
+        <div
+            id="components-container"
+            class="components-list"
+        >
+
+            <div class="loading">
+                Chargement des composants...
+            </div>
+
+        </div>
+
+    </section>
+
+<!-- =================================================
+     IMPORTER DEPUIS INTERNET
+================================================== -->
+<section class="internet-import-section">
+  <div class="section-title">
+    <div>
+      <h2>Importer depuis Internet</h2>
+      <p>Recherche des composants en ligne pour enrichir ta base de données.</p>
+    </div>
   </div>
 
-  <div class="import">
-    <input placeholder="Recherche (RTX 5090...)">
-    <button>Search API</button>
+  <div class="internet-import-form">
+    <input
+      type="text"
+      id="internet-search-input"
+      placeholder="Ex. : RTX 5070, Ryzen 7 7800X3D..."
+    >
+
+    <button type="button" id="internet-search-button">
+      Rechercher sur Internet
+    </button>
   </div>
+
+  <p id="internet-search-status" aria-live="polite"></p>
+
+  <div id="internet-results" class="internet-results-grid"></div>
 </section>
 
+    <!-- =================================================
+         AJOUTER UN COMPOSANT
+    ================================================== -->
+
+    <section class="add-component-section">
+
+
+        <div class="section-title">
+
+            <div>
+
+                <h2>
+                    Ajouter un composant
+                </h2>
+
+                <p>
+                    Ajoute manuellement un nouveau
+                    composant dans la base de données.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form
+            id="add-component-form"
+            class="component-form"
+        >
+
+
+            <!-- NOM -->
+
+            <div class="form-group">
+
+                <label for="component-name">
+                    Nom du composant
+                </label>
+
+                <input
+                    type="text"
+                    id="component-name"
+                    placeholder="Ex : Ryzen 7 7800X3D"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- CATÉGORIE -->
+
+            <div class="form-group">
+
+                <label for="component-category">
+                    Catégorie
+                </label>
+
+                <select
+                    id="component-category"
+                    required
+                >
+
+                    <option value="">
+                        Choisir une catégorie
+                    </option>
+
+                    <option value="CPU">
+                        CPU
+                    </option>
+
+                    <option value="GPU">
+                        GPU
+                    </option>
+
+                    <option value="RAM">
+                        RAM
+                    </option>
+
+                    <option value="Motherboard">
+                        Motherboard
+                    </option>
+
+                    <option value="Storage">
+                        Storage
+                    </option>
+
+                    <option value="PSU">
+                        PSU
+                    </option>
+
+                    <option value="Case">
+                        Case
+                    </option>
+
+                    <option value="Cooling">
+                        Cooling
+                    </option>
+
+                    <option value="Fans">
+                        Fans
+                    </option>
+
+                    <option value="Thermal Paste">
+                        Thermal Paste
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- PRIX -->
+
+            <div class="form-group">
+
+                <label for="component-price">
+                    Prix (€)
+                </label>
+
+                <input
+                    type="number"
+                    id="component-price"
+                    placeholder="Ex : 299.99"
+                    min="0"
+                    step="0.01"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- MARQUE -->
+
+            <div class="form-group">
+
+                <label for="component-brand">
+                    Marque
+                </label>
+
+                <input
+                    type="text"
+                    id="component-brand"
+                    placeholder="Ex : AMD, ASUS, Corsair..."
+                >
+
+            </div>
+
+
+
+            <!-- SPECS -->
+
+            <div class="form-group form-group-full">
+
+                <label for="component-specs">
+                    Spécifications
+                </label>
+
+                <textarea
+                    id="component-specs"
+                    rows="5"
+                    placeholder="Ex : 8 cores / 16 threads / AM5 / 120W..."
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- BOUTON -->
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Ajouter le composant
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+        <div
+            id="component-message"
+            class="component-message"
+        ></div>
+
+
+    </section>
+
+
+
+</main>
+
+
+
+<script src="/js/components.js"></script>
+
 </body>
+
 </html>

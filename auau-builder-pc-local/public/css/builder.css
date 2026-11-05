@@ -1,0 +1,1249 @@
+/* =========================================================
+   AUAU BUILDER
+   CSS DU BUILDER
+   ========================================================= */
+
+html,
+body {
+    min-height: 100%;
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.builder-page {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 45px 30px 120px;
+    box-sizing: border-box;
+}
+
+.builder-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.builder-header h1 {
+    margin: 0;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.builder-header p {
+    margin-top: 8px;
+    opacity: 0.85;
+}
+
+
+/* =========================================================
+   LAYOUT PRINCIPAL
+   ========================================================= */
+
+.builder-layout {
+    position: relative;
+
+    display: flex;
+
+    width: 100%;
+    min-height: 880px;
+
+    gap: 30px;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    overflow: visible;
+}
+
+
+/*
+   Quand le panneau est ouvert :
+   catégories à gauche + panneau à droite
+*/
+.builder-layout:has(.component-panel.open) {
+    justify-content: flex-start;
+}
+
+
+/* =========================================================
+   CATÉGORIES
+   ========================================================= */
+
+.categories-section {
+    width: 430px;
+    flex: 0 0 430px;
+
+    display: flex;
+    justify-content: center;
+
+    margin: 0;
+}
+
+.categories-list {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   CARTE CATÉGORIE
+   ========================================================= */
+
+.category-card {
+    width: 100%;
+    min-height: 78px;
+
+    padding: 14px 16px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    border: 2px solid #48eaff;
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(27, 88, 220, 0.95),
+            rgba(19, 52, 145, 0.95)
+        );
+
+    color: white;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    box-shadow:
+        0 0 10px rgba(0, 225, 255, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.category-card:hover {
+    transform: translateX(5px);
+
+    box-shadow:
+        0 0 18px rgba(0, 225, 255, 0.45);
+}
+
+
+/* =========================================================
+   ICÔNE CATÉGORIE
+   ========================================================= */
+
+.category-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(102, 244, 255, 0.8);
+    border-radius: 9px;
+
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   TEXTE CATÉGORIE
+   ========================================================= */
+
+.category-text {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+
+    flex: 1;
+}
+
+.category-text strong {
+    font-size: 17px;
+    line-height: 1.1;
+}
+
+.category-text span {
+    font-size: 12px;
+    opacity: 0.75;
+}
+
+
+/* =========================================================
+   COMPOSANT SÉLECTIONNÉ
+   ========================================================= */
+
+.selected-component {
+    display: none;
+
+    flex-shrink: 0;
+}
+
+.selected-component.has-selection {
+    display: flex;
+
+    align-items: center;
+
+    width: 185px;
+    min-height: 48px;
+
+    padding: 7px 8px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #62f4ff;
+    border-radius: 10px;
+
+    background:
+        rgba(5, 24, 82, 0.72);
+
+    box-shadow:
+        inset 0 0 10px rgba(0, 238, 255, 0.12);
+}
+
+.selected-component-content {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.selected-label {
+    font-size: 8px;
+    font-weight: 800;
+
+    color: #68f4ff;
+}
+
+.selected-component-content strong {
+    font-size: 11px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.selected-price {
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.remove-selected {
+    width: 25px;
+    height: 25px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #62f4ff;
+    border-radius: 7px;
+
+    background:
+        rgba(5, 20, 70, 0.9);
+
+    color: white;
+
+    font-size: 17px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.remove-selected:hover {
+    background:
+        rgba(255, 50, 80, 0.85);
+}
+
+
+/* =========================================================
+   PANNEAU COMPOSANTS
+   ========================================================= */
+
+.component-panel {
+    flex: 1 1 auto;
+
+    min-width: 0;
+    min-height: 880px;
+
+    border: 2px solid #52edff;
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 67, 180, 0.98),
+            rgba(8, 31, 105, 0.98)
+        );
+
+    box-shadow:
+        0 0 22px rgba(0, 230, 255, 0.2);
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transform:
+        translateX(35px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+/*
+   Fermé :
+   le panneau est complètement retiré du flux.
+   Cela permet aux catégories d'être réellement centrées.
+*/
+.component-panel:not(.open) {
+    position: absolute;
+
+    width: 0;
+    min-width: 0;
+    height: 0;
+    min-height: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/*
+   Ouvert :
+   le panneau revient dans le flux normal.
+*/
+.component-panel.open {
+    position: static;
+
+    width: auto;
+
+    opacity: 1;
+
+    transform:
+        translateX(0);
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   HEADER PANNEAU
+   ========================================================= */
+
+.component-panel-header {
+    min-height: 82px;
+
+    padding: 18px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom:
+        2px solid rgba(72, 234, 255, 0.75);
+
+    box-sizing: border-box;
+}
+
+.component-panel-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.component-panel-header p {
+    margin: 5px 0 0;
+
+    font-size: 12px;
+
+    opacity: 0.75;
+}
+
+
+/* =========================================================
+   CROIX
+   ========================================================= */
+
+.close-panel {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #69efff;
+    border-radius: 10px;
+
+    background:
+        rgba(13, 45, 120, 0.9);
+
+    color: white;
+
+    font-size: 28px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.close-panel:hover {
+    transform: rotate(90deg);
+
+    background:
+        rgba(20, 90, 180, 1);
+}
+
+
+/* =========================================================
+   LISTE COMPOSANTS
+   ========================================================= */
+
+.component-list {
+    padding: 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+
+    max-height: 580px;
+
+    overflow-y: auto;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CARTE COMPOSANT
+   ========================================================= */
+
+.builder-component-card {
+    min-height: 240px;
+
+    padding: 17px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 2px solid #54eaff;
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(38, 111, 238, 0.95),
+            rgba(23, 65, 171, 0.95)
+        );
+
+    box-shadow:
+        0 0 12px rgba(0, 229, 255, 0.14);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.builder-component-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 20px rgba(0, 229, 255, 0.3);
+}
+
+
+/* =========================================================
+   CATÉGORIE COMPOSANT
+   ========================================================= */
+
+.component-card-category {
+    align-self: flex-start;
+
+    padding: 4px 8px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid #73f3ff;
+    border-radius: 6px;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    background:
+        rgba(8, 36, 110, 0.6);
+}
+
+
+/* =========================================================
+   NOM
+   ========================================================= */
+
+.builder-component-card h3 {
+    margin: 0 0 7px;
+
+    font-size: 19px;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   MARQUE
+   ========================================================= */
+
+.component-brand {
+    margin: 0 0 5px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SPECS
+   ========================================================= */
+
+.component-specs {
+    margin: 0;
+
+    font-size: 11px;
+
+    opacity: 0.8;
+
+    min-height: 30px;
+}
+
+
+/* =========================================================
+   BAS CARTE
+   ========================================================= */
+
+.component-card-bottom {
+    margin-top: auto;
+
+    padding-top: 16px;
+
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   PRIX
+   ========================================================= */
+
+.component-price-editor {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.component-price-editor label {
+    font-size: 10px;
+
+    font-weight: 700;
+
+    opacity: 0.8;
+}
+
+.price-row {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+}
+
+.component-price-input {
+    width: 100px;
+    height: 34px;
+
+    padding: 5px 9px;
+
+    box-sizing: border-box;
+
+    border: 2px solid #55ecff;
+    border-radius: 8px;
+
+    outline: none;
+
+    background:
+        rgba(5, 27, 88, 0.85);
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.component-price-input:focus {
+    box-shadow:
+        0 0 10px rgba(81, 239, 255, 0.4);
+}
+
+.price-row span {
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   MODIFIER PRIX
+   ========================================================= */
+
+.update-price-button {
+    height: 30px;
+
+    padding: 0 9px;
+
+    border: 1px solid #55ecff;
+    border-radius: 7px;
+
+    background:
+        rgba(6, 32, 100, 0.8);
+
+    color: white;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.update-price-button:hover {
+    background:
+        rgba(19, 81, 170, 0.95);
+}
+
+
+/* =========================================================
+   SÉLECTIONNER
+   ========================================================= */
+
+.select-component-button {
+    min-width: 115px;
+    height: 40px;
+
+    padding: 0 12px;
+
+    border: 2px solid #65efff;
+    border-radius: 9px;
+
+    background:
+        rgba(12, 49, 130, 0.95);
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.select-component-button:hover {
+    background:
+        rgba(22, 94, 190, 1);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   VIDE / ERREUR
+   ========================================================= */
+
+.component-empty,
+.component-error {
+    grid-column: 1 / -1;
+
+    min-height: 180px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px dashed #55ecff;
+    border-radius: 14px;
+
+    opacity: 0.8;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   SCROLLBAR PANNEAU
+   ========================================================= */
+
+.component-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.component-list::-webkit-scrollbar-track {
+    background:
+        rgba(2, 15, 55, 0.5);
+}
+
+.component-list::-webkit-scrollbar-thumb {
+    background:
+        #43dff5;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   RÉSUMÉ / TOTAL
+   IMPORTANT :
+   .builder-summary est APRÈS .builder-layout dans HTML
+   donc il reste naturellement SOUS le builder.
+   ========================================================= */
+
+.builder-summary {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    margin: 30px 0 40px;
+
+    padding: 18px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 2px solid #4ce9ff;
+    border-radius: 15px;
+
+    background:
+        rgba(9, 38, 105, 0.9);
+}
+
+.builder-summary > div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.builder-summary span {
+    font-size: 12px;
+    opacity: 0.75;
+}
+
+.builder-summary strong {
+    font-size: 26px;
+}
+
+
+/* =========================================================
+   BOUTON SAUVEGARDER
+   ========================================================= */
+
+#save-build {
+    padding: 12px 20px;
+
+    border: 2px solid #60efff;
+    border-radius: 10px;
+
+    background:
+        rgba(19, 80, 170, 0.9);
+
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .builder-layout {
+        gap: 18px;
+    }
+
+    .categories-section {
+        width: 350px;
+        flex-basis: 350px;
+    }
+
+    .component-list {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .selected-component.has-selection {
+        width: 150px;
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .builder-layout {
+        flex-direction: column;
+    }
+
+    .categories-section {
+        width: 100%;
+        flex-basis: auto;
+    }
+
+    .component-panel.open {
+        width: 100%;
+    }
+
+    .component-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .builder-page {
+        padding: 25px 12px 100px;
+    }
+
+    .builder-header h1 {
+        font-size: 30px;
+    }
+
+    .category-card {
+        min-height: 70px;
+    }
+
+    .selected-component.has-selection {
+        width: 145px;
+    }
+
+    .component-card-bottom {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .select-component-button {
+        width: 100%;
+    }
+
+    .builder-summary {
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 15px;
+    }
+}
+/* ========================================
+   VIGNETTE CONFIRMATION SAUVEGARDE
+======================================== */
+
+.save-confirmation-modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(2, 12, 35, 0.78);
+
+    backdrop-filter: blur(4px);
+}
+
+
+.save-confirmation-content {
+    width: 100%;
+    max-width: 460px;
+
+    padding: 32px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #073b91,
+            #06245d
+        );
+
+    border: 2px solid #48eaff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.50);
+
+    color: white;
+
+    animation:
+        saveModalAppear
+        0.18s
+        ease-out;
+}
+
+
+.save-confirmation-icon {
+    width: 54px;
+    height: 54px;
+
+    margin: 0 auto 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #62f4ff;
+    border-radius: 50%;
+
+    background:
+        rgba(22, 140, 255, 0.25);
+
+    color: white;
+
+    font-size: 28px;
+    font-weight: 800;
+}
+
+
+.save-confirmation-content h2 {
+    margin: 0 0 14px;
+
+    color: white;
+
+    font-size: 25px;
+    font-weight: 800;
+}
+
+
+.save-confirmation-content p {
+    margin: 0;
+
+    color: #dbeafe;
+
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+.save-confirmation-content strong {
+    color: white;
+}
+
+
+.save-confirmation-actions {
+    display: flex;
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-top: 28px;
+}
+
+
+.save-confirmation-actions button {
+    min-width: 120px;
+
+    padding: 11px 22px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.cancel-save {
+    border: 2px solid #48eaff;
+
+    background: transparent;
+
+    color: white;
+}
+
+
+.cancel-save:hover {
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    transform: translateY(-2px);
+}
+
+
+.confirm-save {
+    border: none;
+
+    background: #168cff;
+
+    color: white;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+.confirm-save:hover {
+    background: #0b6fd8;
+
+    transform: translateY(-2px);
+}
+
+
+.confirm-save:disabled {
+    opacity: 0.65;
+
+    cursor: wait;
+}
+
+
+@keyframes saveModalAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.94)
+            translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .save-confirmation-content {
+        padding: 24px;
+    }
+
+    .save-confirmation-actions {
+        flex-direction: column;
+    }
+
+    .save-confirmation-actions button {
+        width: 100%;
+    }
+}
+/* =========================================================
+   AUAU BUILDER
+   CORRECTION AFFICHAGE + SCROLL + TOTAL
+   ========================================================= */
+
+
+/* ========================================
+   PAGE BUILDER
+======================================== */
+
+.builder-page {
+    padding-bottom: 30px;
+}
+
+
+/* ========================================
+   LAYOUT PRINCIPAL
+======================================== */
+
+.builder-layout {
+    min-height: 0;
+
+    align-items: flex-start;
+
+    overflow: visible;
+}
+
+
+/* ========================================
+   PANNEAU COMPOSANTS
+======================================== */
+
+.component-panel {
+    min-height: 0;
+
+    overflow: hidden;
+}
+
+.component-panel.open {
+    height: auto;
+    min-height: 0;
+}
+
+
+/* ========================================
+   LISTE DES COMPOSANTS
+======================================== */
+
+.component-list {
+    max-height: 550px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    align-content: start;
+
+    padding: 20px;
+
+    scrollbar-gutter: stable;
+}
+
+
+/* ========================================
+   CARTES DES COMPOSANTS
+======================================== */
+
+.builder-component-card {
+    min-height: 240px;
+    height: auto;
+
+    overflow: visible;
+}
+
+
+/* ========================================
+   RÉSUMÉ / TOTAL
+======================================== */
+
+.builder-summary {
+    position: sticky;
+
+    bottom: 10px;
+
+    z-index: 100;
+
+    margin: 20px 0;
+
+    padding: 16px 22px;
+
+    background: rgba(9, 38, 105, 0.98);
+
+    box-shadow:
+        0 0 20px rgba(0, 230, 255, 0.25);
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 850px) {
+
+    .builder-layout {
+        flex-direction: column;
+    }
+
+    .component-panel.open {
+        width: 100%;
+    }
+
+    .component-list {
+        max-height: 450px;
+        grid-template-columns: 1fr;
+    }
+
+    .builder-summary {
+        bottom: 0;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .component-list {
+        max-height: 400px;
+    }
+
+    .builder-summary {
+        padding: 12px;
+    }
+}
+/* ========================================
+   DESCENDRE LE TOTAL DU BUILDER
+======================================== */
+
+.builder-summary {
+    position: relative;
+    bottom: auto;
+
+    margin-top: 430px;
+    margin-bottom: 40px;
+}

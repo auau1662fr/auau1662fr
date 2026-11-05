@@ -1,41 +1,266 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Compare</title>
-  <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comparateur IA - AUAU BUILDER</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/compare.css">
 </head>
 
 <body>
 
-<header class="navbar">
-  <div class="logo">AUAU BUILDER</div>
+    <!-- BARRE DE NAVIGATION -->
 
-  <nav class="nav-links">
-    <a href="index.html">Accueil</a>
-    <a href="builder.html">Builder</a>
-    <a href="components.html">Components</a>
-    <a href="compare.html">Compare</a>
-  </nav>
-</header>
+    <header class="navbar">
 
-<section class="page">
-  <h1>COMPARE BUILDS</h1>
+        <div class="logo">
+            AUAU BUILDER
+        </div>
 
-  <div class="compare-grid">
-    <div>
-      <h3>Build 1</h3>
-      <select></select>
-    </div>
+        <nav class="nav-links">
 
-    <div>
-      <h3>Build 2</h3>
-      <select></select>
-    </div>
-  </div>
+            <a href="index.html">
+                Accueil
+            </a>
 
-  <button>Comparer</button>
-</section>
+            <a href="builder.html">
+                Builder
+            </a>
+
+            <a href="components.html">
+                Components
+            </a>
+
+            <a href="compare.html" class="active">
+                Compare
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- PAGE COMPARATEUR -->
+
+    <main class="compare-page">
+
+        <!-- TITRE -->
+
+        <div class="compare-header">
+
+            <h1>
+                COMPARATEUR INTELLIGENT
+            </h1>
+
+            <p>
+                Compare plusieurs configurations PC et découvre
+                les avantages de chaque build.
+            </p>
+
+        </div>
+
+
+        <!-- SÉLECTION DES BUILDS -->
+
+        <section class="compare-selection">
+
+            <div class="selection-header">
+
+                <h2>
+                    Choisir les builds
+                </h2>
+
+                <button
+                    id="add-build"
+                    type="button"
+                >
+                    + Ajouter un build
+                </button>
+
+            </div>
+
+
+            <!-- Les sélecteurs sont créés par compare.js -->
+
+            <div
+                id="build-selectors"
+                class="build-selectors"
+            ></div>
+
+
+            <div class="compare-actions">
+
+                <button
+                    id="compare-button"
+                    type="button"
+                >
+                    🧠 Analyser les builds
+                </button>
+
+            </div>
+
+
+            <p
+                id="compare-message"
+                class="compare-message"
+                role="status"
+            ></p>
+
+        </section>
+
+
+        <!-- RÉSULTATS -->
+
+        <section
+            id="compare-results"
+            class="compare-results"
+            hidden
+        >
+
+            <!-- TABLEAU COMPARATIF -->
+
+            <h2>
+                Comparaison des configurations
+            </h2>
+
+            <div class="comparison-scroll">
+
+                <div id="comparison-table"></div>
+
+            </div>
+
+
+            <!-- ANALYSE LOCALE -->
+
+            <h2>
+                Analyse locale
+            </h2>
+
+            <p class="analysis-intro">
+                Analyse calculée localement à partir des prix,
+                des composants et des caractéristiques disponibles.
+            </p>
+
+            <div
+                id="analysis-cards"
+                class="analysis-cards"
+            ></div>
+
+
+            <hr class="analysis-divider">
+
+
+            <!-- ANALYSE INTELLIGENCE ARTIFICIELLE -->
+
+            <section
+                id="ai-analysis-section"
+                class="ai-analysis-section"
+            >
+
+                <h2>
+                    🤖 Analyse par intelligence artificielle locale
+                </h2>
+
+                <p class="analysis-intro">
+                    Utilise Qwen avec LM Studio pour obtenir
+                    une analyse détaillée des configurations PC.
+                </p>
+
+                <p class="analysis-intro">
+                    L'intelligence artificielle peut comparer
+                    les processeurs, les cartes graphiques,
+                    la mémoire RAM, le stockage, les prix
+                    et les possibilités d'évolution.
+                </p>
+
+
+                <!-- BOUTON QWEN -->
+
+                <button
+                    id="ai-analyze-button"
+                    type="button"
+                >
+                    🤖 Analyser avec Qwen
+                </button>
+
+<!-- PROGRESSION DE L'ANALYSE QWEN -->
+
+<div id="ai-progress" class="ai-progress" hidden>
+
+    <p>
+        🧠 Génération Qwen en cours…
+    </p>
+
+    <p>
+        ⏱️ Temps écoulé :
+        <strong id="ai-elapsed">00:00</strong>
+    </p>
+
+    <p>
+        📈 Temps moyen :
+        <strong id="ai-average">--:--</strong>
+    </p>
+
+    <p>
+        ⏳ Temps restant estimé :
+        <strong id="ai-remaining">--:--</strong>
+    </p>
+
+    <p>
+        📊 Progression estimée :
+        <strong id="ai-percent">0 %</strong>
+    </p>
+
+    <progress
+        id="ai-progress-bar"
+        value="0"
+        max="100"
+        style="width: 100%;"
+    ></progress>
+
+</div>
+
+                <!-- MESSAGE DE CHARGEMENT OU D'ERREUR -->
+
+                <p
+                    id="ai-analysis-message"
+                    class="compare-message"
+                    role="status"
+                ></p>
+
+
+                <!-- RÉSULTAT QWEN -->
+
+                <article
+                    id="ai-analysis-result"
+                    class="ai-analysis-result"
+                    hidden
+                >
+
+                    <h3>
+                        Résultat de l'analyse IA
+                    </h3>
+
+                    <div id="ai-analysis-content"></div>
+
+                </article>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="/js/compare.js?v=2"></script>
 
 </body>
+
 </html>

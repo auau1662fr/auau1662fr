@@ -1,102 +1,490 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Builder</title>
 
-  <link rel="stylesheet" href="css/style.css">
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Builder - AUAU BUILDER</title>
+
+<!-- CSS général -->
+<link rel="stylesheet" href="/css/style.css">
+
+<!-- CSS spécifique au Builder -->
+<link rel="stylesheet" href="/css/builder.css">
+
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-
 <header class="navbar">
 
-  <div class="logo">
+<div class="logo">
     AUAU BUILDER
-  </div>
+</div>
 
-  <nav class="nav-links">
+<nav class="nav-links">
     <a href="index.html">Accueil</a>
-    <a href="builder.html">Builder</a>
+    <a href="builder.html" class="active">Builder</a>
     <a href="components.html">Components</a>
     <a href="compare.html">Compare</a>
-  </nav>
+</nav>
 
 </header>
 
-<!-- PAGE -->
+<main class="builder-page">
 
-<div class="builder-layout">
+<div class="builder-header">
 
-  <!-- COLONNE BUILDER -->
+    <h1>PC BUILDER</h1>
 
-  <section class="builder-column" id="builder-column">
-
-    <h1 class="page-title">
-      PC BUILDER
-    </h1>
-
-    <div class="components-grid">
-
-      <div class="component-card" onclick="togglePanel('CPU')">
-        <h2>CPU</h2>
-      </div>
-
-      <div class="component-card" onclick="togglePanel('GPU')">
-        <h2>GPU</h2>
-      </div>
-
-      <div class="component-card" onclick="togglePanel('RAM')">
-        <h2>RAM</h2>
-      </div>
-
-      <div class="component-card" onclick="togglePanel('Motherboard')">
-        <h2>Motherboard</h2>
-      </div>
-
-      <div class="component-card" onclick="togglePanel('Storage')">
-        <h2>Storage</h2>
-      </div>
-
-      <div class="component-card" onclick="togglePanel('PSU')">
-        <h2>PSU</h2>
-      </div>
-
-      <div class="component-card" onclick="togglePanel('Case')">
-        <h2>Case</h2>
-      </div>
-
-      <div class="component-card" onclick="togglePanel('Cooling')">
-        <h2>Cooling</h2>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- PANEL -->
-
-  <aside class="components-panel" id="components-panel">
-
-    <div class="panel-header">
-
-      <h2 id="panel-title">
-        Components
-      </h2>
-
-      <button class="close-btn" onclick="closePanel()">
-        ✕
-      </button>
-
-    </div>
-
-<div class="panel-content" id="panel-content">
+    <p>
+        Configure ton PC composant par composant
+    </p>
 
 </div>
 
-<script src="js/app.js"></script>
 
-</body>
-</html>
+<!-- ZONE PRINCIPALE -->
+
+<div
+    id="builder-layout"
+    class="builder-layout"
+>
+
+
+    <!-- ========================= -->
+    <!-- CATEGORIES -->
+    <!-- ========================= -->
+
+    <section
+        id="categories-section"
+        class="categories-section"
+    >
+
+        <div class="categories-list">
+
+
+            <!-- CPU -->
+
+            <button
+                class="category-card"
+                data-category="CPU"
+                type="button"
+            >
+
+                <div class="category-icon">
+                    ▣
+                </div>
+
+                <div class="category-text">
+
+                    <strong>
+                        Processeur
+                    </strong>
+
+                    <span>
+                        CPU
+                    </span>
+
+                </div>
+
+                <div
+                    class="selected-component"
+                    data-selected-for="CPU"
+                ></div>
+
+            </button>
+
+
+            <!-- GPU -->
+
+            <button
+                class="category-card"
+                data-category="GPU"
+                type="button"
+            >
+
+                <div class="category-icon">
+                    ▤
+                </div>
+
+                <div class="category-text">
+
+                    <strong>
+                        Carte graphique
+                    </strong>
+
+                    <span>
+                        GPU
+                    </span>
+
+                </div>
+
+                <div
+                    class="selected-component"
+                    data-selected-for="GPU"
+                ></div>
+
+            </button>
+
+
+            <!-- RAM -->
+
+            <button
+                class="category-card"
+                data-category="RAM"
+                type="button"
+            >
+
+                <div class="category-icon">
+                    ▥
+                </div>
+
+                <div class="category-text">
+
+                    <strong>
+                        Mémoire vive
+                    </strong>
+
+                    <span>
+                        RAM
+                    </span>
+
+                </div>
+
+                <div
+                    class="selected-component"
+                    data-selected-for="RAM"
+                ></div>
+
+            </button>
+
+
+            <!-- MOTHERBOARD -->
+
+            <button
+                class="category-card"
+                data-category="Motherboard"
+                type="button"
+            >
+
+                <div class="category-icon">
+                    ▦
+                </div>
+
+                <div class="category-text">
+
+                    <strong>
+                        Carte mère
+                    </strong>
+
+                    <span>
+                        Motherboard
+                    </span>
+
+                </div>
+
+                <div
+                    class="selected-component"
+                    data-selected-for="Motherboard"
+                ></div>
+
+            </button>
+
+
+            <!-- STORAGE -->
+
+            <button
+                class="category-card"
+                data-category="Storage"
+                type="button"
+            >
+
+                <div class="category-icon">
+                    ▣
+                </div>
+
+                <div class="category-text">
+
+                    <strong>
+                        Stockage
+                    </strong>
+
+                    <span>
+                        SSD / HDD
+                    </span>
+
+                </div>
+
+                <div
+                    class="selected-component"
+                    data-selected-for="Storage"
+                ></div>
+
+            </button>
+
+
+            <!-- PSU -->
+
+            <button
+                class="category-card"
+                data-category="PSU"
+                type="button"
+            >
+
+                <div class="category-icon">
+                    ◉
+                </div>
+
+                <div class="category-text">
+
+                    <strong>
+                        Alimentation
+                    </strong>
+
+                    <span>
+                        PSU
+                    </span>
+
+                </div>
+
+                <div
+                    class="selected-component"
+                    data-selected-for="PSU"
+                ></div>
+
+            </button>
+
+
+            <!-- CASE -->
+
+            <button
+                class="category-card"
+                data-category="Case"
+                type="button"
+            >
+
+                <div class="category-icon">
+                    ▯
+                </div>
+
+                <div class="category-text">
+
+                    <strong>
+                        Boîtier
+                    </strong>
+
+                    <span>
+                        Case
+                    </span>
+
+                </div>
+
+                <div
+                    class="selected-component"
+                    data-selected-for="Case"
+                ></div>
+
+            </button>
+
+
+            <!-- FANS -->
+
+            <button
+                class="category-card"
+                data-category="Fans"
+                type="button"
+            >
+
+                <div class="category-icon">
+                    ✣
+                </div>
+
+                <div class="category-text">
+
+                    <strong>
+                        Ventilateurs
+                    </strong>
+
+                    <span>
+                        Fans
+                    </span>
+
+                </div>
+
+                <div
+                    class="selected-component"
+                    data-selected-for="Fans"
+                ></div>
+
+            </button>
+
+
+            <!-- COOLING -->
+
+            <button
+                class="category-card"
+                data-category="Cooling"
+                type="button"
+            >
+
+                <div class="category-icon">
+                    ❄
+                </div>
+
+                <div class="category-text">
+
+                    <strong>
+                        Ventirad / Watercooling
+                    </strong>
+
+                    <span>
+                        Cooling
+                    </span>
+
+                </div>
+
+                <div
+                    class="selected-component"
+                    data-selected-for="Cooling"
+                ></div>
+
+            </button>
+
+
+            <!-- THERMAL PASTE -->
+
+            <button
+                class="category-card"
+                data-category="Thermal Paste"
+                type="button"
+            >
+
+                <div class="category-icon">
+                    ◆
+                </div>
+
+                <div class="category-text">
+
+                    <strong>
+                        Pâte thermique
+                    </strong>
+
+                    <span>
+                        Thermal Paste
+                    </span>
+
+                </div>
+
+                <div
+                    class="selected-component"
+                    data-selected-for="Thermal Paste"
+                ></div>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================= -->
+    <!-- PANNEAU COMPOSANTS -->
+    <!-- ========================= -->
+
+    <section
+        id="component-panel"
+        class="component-panel"
+    >
+
+        <div class="component-panel-header">
+
+            <div>
+
+                <h2 id="panel-title">
+                    Choisir un composant
+                </h2>
+
+                <p id="panel-subtitle">
+                    Sélectionne un composant
+                </p>
+
+            </div>
+
+
+            <button
+                id="close-panel"
+                class="close-panel"
+                type="button"
+                aria-label="Fermer"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="component-list"
+            class="component-list"
+        >
+
+            <!-- Les composants sont ajoutés ici par app.js -->
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+<!-- ========================= -->
+<!-- RESUME -->
+<!-- ========================= -->
+
+<section class="builder-summary">
+
+    <div class="summary-total">
+
+        <span>
+            Total
+        </span>
+
+        <strong id="total-price">
+            0.00 €
+        </strong>
+
+    </div>
+
+    <div class="summary-save">
+
+        <label for="build-name">
+            Nom de la configuration
+        </label>
+
+        <input
+            type="text"
+            id="build-name"
+            name="build-name"
+            placeholder="Ex : Mon PC Gaming"
+            maxlength="100"
+        >
+
+        <button
+            id="save-build"
+            type="button"
+        >
+            Sauvegarder le build
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+<script src="/js/app.js"></script>

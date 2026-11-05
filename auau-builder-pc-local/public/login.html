@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connexion — AUAU Builder</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #10141c;
+      color: #f5f7fa;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      padding: 30px;
+      border: 1px solid #303846;
+      border-radius: 16px;
+      background: #1a202b;
+      box-shadow: 0 15px 45px #0005;
+    }
+
+    h1 { margin-top: 0; text-align: center; }
+    .subtitle { color: #aeb8c7; text-align: center; margin-bottom: 25px; }
+    .tabs { display: flex; gap: 10px; margin-bottom: 22px; }
+
+    .tabs button {
+      flex: 1;
+      padding: 11px;
+      border: 1px solid #465164;
+      border-radius: 8px;
+      background: #252d3a;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .tabs button.active { background: #2563eb; border-color: #2563eb; }
+
+    label { display: block; margin: 15px 0 7px; font-size: 14px; }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #465164;
+      border-radius: 8px;
+      background: #10141c;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .submit {
+      width: 100%;
+      margin-top: 22px;
+      padding: 13px;
+      border: 0;
+      border-radius: 8px;
+      background: #2563eb;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit:disabled { opacity: .6; cursor: wait; }
+    #message { margin-top: 16px; line-height: 1.5; }
+    .error { color: #ff8b8b; }
+    .success { color: #7ee2a8; }
+
+    .back { display: block; margin-top: 22px; text-align: center; color: #aeb8c7; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>AUAU Builder</h1>
+    <p class="subtitle">Connecte-toi pour retrouver tes configurations.</p>
+
+    <div class="tabs">
+      <button type="button" id="loginTab" class="active">Connexion</button>
+      <button type="button" id="registerTab">Créer un compte</button>
+    </div>
+
+    <form id="authForm">
+      <label for="username">Nom d'utilisateur</label>
+      <input id="username" name="username" type="text"
+             minlength="3" maxlength="30" autocomplete="username"
+             required>
+
+      <label for="password">Mot de passe</label>
+      <input id="password" name="password" type="password"
+             minlength="8" maxlength="200"
+             autocomplete="current-password" required>
+
+      <button class="submit" id="submitButton" type="submit">Se connecter</button>
+    </form>
+
+    <p id="message" role="status" aria-live="polite"></p>
+    <a class="back" href="/">Retour à l'accueil</a>
+  </main>
+
+  <script>
+    const form = document.getElementById("authForm");
+    const loginTab = document.getElementById("loginTab");
+    const registerTab = document.getElementById("registerTab");
+    const submitButton = document.getElementById("submitButton");
+    const message = document.getElementById("message");
+    const password = document.getElementById("password");
+
+    let mode = "login";
+
+    function setMode(newMode) {
+      mode = newMode;
+      const registering = mode === "register";
+
+      loginTab.classList.toggle("active", !registering);
+      registerTab.classList.toggle("active", registering);
+      submitButton.textContent = registering ? "Créer mon compte" : "Se connecter";
+      password.autocomplete = registering ? "new-password" : "current-password";
+      message.textContent = "";
+      message.className = "";
+    }
+
+    loginTab.addEventListener("click", () => setMode("login"));
+    registerTab.addEventListener("click", () => setMode("register"));
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      message.textContent = "";
+      message.className = "";
+      submitButton.disabled = true;
+
+      const payload = {
+        username: document.getElementById("username").value.trim(),
+        password: password.value
+      };
+
+      try {
+        const endpoint = mode === "register"
+          ? "/api/auth/register"
+          : "/api/auth/login";
+
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "same-origin",
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Une erreur est survenue.");
+        }
+
+        message.textContent = mode === "register"
+          ? "Compte créé ! Redirection en cours…"
+          : "Connexion réussie ! Redirection en cours…";
+        message.className = "success";
+
+        window.location.href = "/";
+      } catch (error) {
+        message.textContent = error.message || "Impossible de contacter le serveur.";
+        message.className = "error";
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+
+    fetch("/api/auth/me", { credentials: "same-origin" })
+      .then(response => {
+        if (response.ok) window.location.href = "/";
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>
